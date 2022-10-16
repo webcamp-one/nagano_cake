@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <ul>
+        <% if admin_signed_in? %>
+          <li><%= link_to "商品一覧", url: admin_items_path %></li>
+
+          <li><%= link_to "会員一覧", url: admin_customers_path %></li>
+
+          <li><%= link_to "注文履歴一覧", url: admin_path %></li>
+
+          <li><%= link_to "ジャンル一覧", url: admin_genres_path %></li>
+
+          <li><%= link_to "ログアウト", url: destroy_admin_session_path %></li>
+        <% elsif customer_signed_in? %>
+          <li><%= link_to "マイページ", url: root_path %></li>
+
+          <li><%= link_to "商品一覧", url: items_path %></li>
+
+          <li><%= link_to "カート", url: cart_items_path %></li>
+
+          <li><%= link_to "ログアウト", url: destroy_customer_session_path %></li>
+        <% else %>
+          <li><%= link_to "About", url: about_path %></li>
+
+        <% end %>
+        </ul>
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>
