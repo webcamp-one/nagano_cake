@@ -1,0 +1,10 @@
+<div>
+  <h5>ジャンル検索</h5>
+  <% genres.each do |f| %>
+    <ul>
+      <li>
+        <%= link_to f.name,"/items/search/#{f.id}" %>
+      </li>
+    </ul>
+  <% end %>
+</div>

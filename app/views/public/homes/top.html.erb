@@ -1,2 +1,10 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<%= render 'genre',genres:@genres %>
+
+<h3>新着商品</h3>
+<% @items.each do |f| %>
+<div>
+  <%= image_tag f.get_image(100,100) %>
+  <%= f.name %>
+  ¥<%= f.price %>
+</div>
+<% end %>
