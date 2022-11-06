@@ -182,5 +182,5 @@ ja:
   enums:
     order:
       payment_method:
-        credit_card:"クレジットカード"
-        transfer:"銀行振込"
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
