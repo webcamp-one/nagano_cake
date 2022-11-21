@@ -25,28 +25,45 @@ class Public::OrdersController < ApplicationController
     end
 
     @cart_items = current_customer.cart_items
+    @total=0
   end
 
   def complete
+
   end
 
   def create
-    @order = Order.find(params[:id])
-    @order.save
-    redirect_to orders_complete_path
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    if @order.save# if save == true ? order_detail 作成 | render 失敗
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |f|
+        order_detail = OrderDetail.new
+        order_detail.item_id = f.item_id
+        order_detail.order_id = @order.id
+        order_detail.price = f.item.with_tax_price
+        order_detail.amount = f.amount
+        order_detail.save
+      end
+      @cart_items.destroy_all
+      redirect_to orders_complete_path
+    else
+      render :information
+    end
   end
 
   def index
-    @order = Order.all
+    @order = Order.page(params[:page])
   end
 
   def show
+    @order = Order.find(params[:id])
   end
-
 
   private
 
   def order_params
-    params.require(:order).permit(:postal_code,:address,:name,:postage,:tatal_payment,:payment_method,:order_status)
+    params.require(:order).permit(:postal_code,:address,:name,:postage,:total_payment,:payment_method,:order_status)
   end
+  
 end

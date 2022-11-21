@@ -1,22 +1,32 @@
-<h2>ログイン</h2>
-
-<h3>会員の方はこちらからログイン</h3>
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"sample@example.com"%>
+<div class="container">
+  <div class="text-center mt-5 ml-3 bg-secondary" style="width:200px;">
+    <h3>ログイン</h3>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="text-center mt-5 ml-5 bg-secondary" style="width:400px;">
+    <h4>会員の方はこちらからログイン</h4>
   </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  
+  <table class="table table-borderless m-3">
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <tr>
+        <th class="text-center">メールアドレス</th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"sample@example.com", :size => "50*50" %></td>
+      </tr>
+      <tr>
+        <th class="text-center">パスワード</th>
+        <td><%= f.password_field :password, autocomplete: "current-password", :size => "50*50" %></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><%= f.submit "ログイン",class:"btn btn-success" %></td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="text-center mt-5 ml-5 bg-secondary" style="width:300px;">
+    <h4>会員登録がお済みでない方</h4>
   </div>
-<% end %>
-
-<h3>会員登録がお済みでない方</h3>
-<%= render "public/shared/links" %>から新規登録を行ってください。
+  <div class="ml-5 pl-5">
+    <%= render "public/shared/links" %>から新規登録を行ってください。
+  </div>
+</div>
 
