@@ -6,12 +6,12 @@
     <h4>会員の方はこちらからログイン</h4>
   </div>
 
-  <div class="row m-3">
+  <table class="table table-borderless m-3">
     <%= form_with model: @customer, url: customer_session_path do |f| %>
-      <div>
+      <tr>
         <th class="text-center">メールアドレス</th>
         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"sample@example.com", :size => "50*50" %></td>
-      </div>
+      </tr>
       <tr>
         <th class="text-center">パスワード</th>
         <td><%= f.password_field :password, autocomplete: "current-password", :size => "50*50" %></td>
