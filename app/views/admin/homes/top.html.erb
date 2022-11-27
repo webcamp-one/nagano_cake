@@ -1,13 +1,16 @@
-<h3>注文履歴一覧</h3>
-
-<div>
-  <table>
+<div class="container">
+  <div class="row">
+    <div class="text-center m-5 bg-light" style="width:200px;">
+      <h3>注文履歴一覧</h3>
+    </div>
+  </div>
+  <table class="table">
     <thead>
       <tr>
-        <th>購入日時</th>
-        <th>購入者</th>
-        <th>注文個数</th>
-        <th>注文ステータス</th>
+        <th class="bg-light" style="width: 25%">購入日時</th>
+        <th class="bg-light" style="width: 25%">購入者</th>
+        <th class="bg-light" style="width: 25%">注文個数</th>
+        <th class="bg-light" style="width: 25%">注文ステータス</th>
       </tr>
     </thead>
     <tbody>
@@ -15,7 +18,7 @@
         <tr>
           <td>
             <%= link_to admin_order_path(order.id) do %>
-              <%= order.created_at.strftime('%Y/%m/%d %H:%m:%S') %>
+              <span class="text-dark"><%= order.created_at.strftime('%Y/%m/%d %H:%m:%S') %></span>
             <% end %>
           </td>
           <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
@@ -29,5 +32,8 @@
       <% end %>
     </tbody>
   </table>
+  <div class="d-flex justify-content-center ">
+    <%= paginate @orders %>
+  </div>
 </div>
-<%= paginate @orders %>
+

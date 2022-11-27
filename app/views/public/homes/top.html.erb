@@ -18,16 +18,16 @@
     </div>
     <div class="col-md-9">
       <h3>新着商品</h3>
-      <div class="card-group">
+      <div class="card-deck">
         <% @items.each do |item| %>
           <div class="card w-50 mt-3">
             <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(100,100), class:"card_img_top"; %>
+              <%= image_tag item.get_image(100,200),:width => '100%', :height => '130', class:"card_img_top" %>
               <div class="card-body">
-                <p class="card-title">
+                <p class="card-title text-dark">
                   <%= item.name %>
                 </p>
-                <p class="cart-title">
+                <p class="cart-title text-dark">
                   ¥<%= item.price %>
                 </p>
               </div>
