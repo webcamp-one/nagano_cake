@@ -261,7 +261,6 @@ DEPENDENCIES
   kaminari (~> 1.2.1)
   listen (~> 3.3)
   net-smtp
-  pry
   pry-rails
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
